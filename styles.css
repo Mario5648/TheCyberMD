@@ -45,19 +45,36 @@ body
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 700px;
+    height: 500px;
 
 }
 
 .hero_text
 {
     margin-top: 200px;
-    font-size: 1.8rem;
+    width: 450px;
+}
+
+.hero_main_text
+{
+    font-size: 1.5em;
+    font-weight: 800;
 }
 
 .hero_image
 {
-    margin-top: 90px;
-    width: 700px;
-    height: 500px;
+    margin-top: 110px;
+    width: 500px;
+    height: 350px;
+}
+
+.hero_button
+{
+    height: 55px;
+    width: 12em;
+    background-color: #EF233C;
+    color: #EDF2F4;
+    border-style: none;
+    font-size: 1.3em;
+
 }
