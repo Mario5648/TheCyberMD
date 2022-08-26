@@ -10,14 +10,17 @@ body
     color: #EDF2F4;
     font-size: 1.3rem;
     font-weight: 100;
+    display: flex;
+    justify-content: center;
+    height: 100px;
 }
 
 .navigation_bar_image
 {
     width:150px;
     height:50px;
-    padding-left: 1.8em;
     padding-top: 1.8em;
+    padding-left: 2em;
 }
 
 .navigation_bar_items
@@ -26,10 +29,35 @@ body
     float: right;
     padding-top: 2em;
     padding-right: 2em;
+    padding-left: 10em;
 }
 
 .navigation_bar_item
 {
-    padding-left: 1em;
     padding-right: 1em;
+}
+
+.hero_banner
+{
+    margin-top: -30px;
+    background-color: #2B2D42;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 700px;
+
+}
+
+.hero_text
+{
+    margin-top: 200px;
+    font-size: 1.8rem;
+}
+
+.hero_image
+{
+    margin-top: 90px;
+    width: 700px;
+    height: 500px;
 }
