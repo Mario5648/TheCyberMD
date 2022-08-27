@@ -1,0 +1,122 @@
+<html>
+    <link rel="icon" href="images/heart_icon.png">
+
+    <header>
+        <title>About Us</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">        
+        <link rel="stylesheet" href="styles/about_styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </header>
+    <body>
+        <div class="navigation_bar">
+            <div class="navbar_container">
+                <div class="navigation_bar_items">
+                <a href="#home" class="navigation_bar_item">Home</a>
+                    <span class="show_on_desktops">
+                        <a href="#resources" class="hide_mobile navigation_bar_item">Resources</a>
+                        <a href="#about" class="hide_mobile navigation_bar_item">About Us</a>
+                        <a href="#contact" class="hide_mobile navigation_bar_item">Contact Us</a>
+                        <a href="#collab" class="hide_mobile navigation_bar_item">Collaborators</a>
+                    </span>
+                <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+          </div>
+          
+          <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+          <div class="hide_desktops">
+            <div id="navDemo" class="w3-bar-block w3-black w3-hide hide_desktops w3-top" style="margin-top:46px">
+                <a href="#resources" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Resources</a>
+                <a href="#about" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">About Us</a>
+                <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Contact Us</a>
+                <a href="#collab" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Collaborators</a>
+            </div>
+          </div>
+
+          <!--Mission section-->
+          <div class="section_container mission_container">
+            <p class="section_title">Mission</p>
+            <p class="mission_statement">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+          </div>
+
+          <!--Story section-->
+          <div class="section_container story_container">
+            <p class="section_title">Our Story</p>
+            <div class="content_conatiner">
+                <div>
+                    <img class="story_image" src="./images/empty.jpg">
+                </div>
+                <div>
+                    <p class="story_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+          </div>
+
+          <!--Founders section-->
+          <div class="section_container founders_container">
+            <p class="section_title">The Founders</p>
+            <div class="content_conatiner">
+                <div class="founder_container">
+                    <img class="founder_image" src="./images/empty.jpg">
+                    <p class="founder_name">First LastName</p>
+                    <p class="founder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="founder_container">
+                    <img class="founder_image" src="./images/empty.jpg">
+                    <p class="founder_name">First LastName</p>
+                    <p class="founder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+
+          </div>
+
+
+          <div class="footer_c">
+            <div class="footer_container">
+                <!--Item one-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Explore</p>
+                    <p>About Us</p>
+                    <p>Resources</p>
+                    <p>Contributors</p>
+                </div>
+                <!--Item two-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Resources</p>
+                    <p>Videos</p>
+                    <p>Readings</p>
+                    <p>Questions</p>
+                    <p>Tests/Quizzes</p>
+                </div> 
+                <!--Item three-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Community</p>
+                    <p>Discord</p>
+                    <p>Contribute</p>
+                    <p>Contact Us</p>
+                    <p>Volunteer</p>
+                </div> 
+                <!--Item four-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Follow Us</p>
+                    <span class="social_media_footer_icon"><i class="fa fa-instagram"></i></span>
+                    <span class="social_media_footer_icon"><i class="fa fa-twitter"></i></span>
+                </div> 
+            </div>
+            <p class="footer_property_text">Cyber M.D 2022</p>
+        </div>
+        <script>
+            // Used to toggle the menu on small screens when clicking on the menu button
+            function myFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else { 
+                x.className = x.className.replace(" w3-show", "");
+            }
+            }
+        </script>
+    </body>
+</html>

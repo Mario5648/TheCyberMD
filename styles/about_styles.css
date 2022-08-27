@@ -1,0 +1,470 @@
+body
+{
+    margin: 0px;
+    padding:0px;
+    font-family: 'Roboto Mono';
+    width:100%;
+    overflow-x: hidden;
+}
+
+/*Desktop*/
+@media only screen and (min-width: 1600px) 
+{    .hide_desktops
+    {
+        display:none;
+    }
+    .navigation_bar
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        height: 80px;
+        background-color:#2B2D42;
+    }
+    .navbar_container
+    {
+        display: flex;
+        align-items: center;
+        width: 1500px;
+    }
+    .navigation_bar_items
+    {
+        display: flex;
+        justify-content: flex-start;
+        text-align: right;
+        flex-grow: 1;
+    }
+
+    .navigation_bar_item{
+        color: #EDF2F4;
+        text-decoration: none;
+        font-size: 20px;
+        padding-right: 20px;
+    }
+
+    .section_title
+    {
+        font-size: 50px;
+        color:#2B2D42;
+    }
+
+    .section_container
+    {
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .content_conatiner
+    {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        width: 1500px;
+    }
+
+    .mission_container
+    {
+        
+        height:600px
+    }
+    .mission_statement
+    {
+        font-size: 23px;
+        color: #8D99AE;
+    }
+
+    .story_container
+    {
+        background-color: #8D99AE;
+        height:800px
+    }
+
+    .story_text
+    {
+        font-size: 20px;
+        padding-left: 50px;
+    }
+
+    .story_image
+    {
+        border-radius: 90px;
+    }
+
+    .founder_container
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-left:50px;
+        padding-right: 50px;
+    }
+    .founders_container
+    {
+        height: 900px;
+    }
+    .founder_image
+    {
+        border-radius: 100%;
+    }
+    .founder_name
+    {
+        font-size: 20px;
+    }
+
+    .footer_c
+    {
+        background-color: #2B2D42;
+        color: #EDF2F4;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer_container
+    {
+        display: flex;
+        min-width: 800px;
+        justify-content: space-evenly;
+    }
+
+    .footer_category_title
+    {
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .footer_item
+    {
+        font-size: 16px;
+    }
+
+    .footer_property_text
+    {
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    .footer_develop_text
+    {
+        text-align: center;
+    }
+    .social_media_footer_icon
+    {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 1600px)
+{
+    .show_on_desktops
+    {
+        display: none;
+    }
+}
+/*Tablets*/
+@media only screen and (max-width: 1599px)and (min-width: 1000px) 
+{
+    .navigation_bar
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        height: 80px;
+        background-color:#2B2D42;
+    }
+    .navbar_container
+    {
+        display: flex;
+        align-items: center;
+        width: 900px;
+    }
+    .navigation_bar_items
+    {
+        display: flex;
+        justify-content: flex-start;
+        text-align: right;
+        align-items: center;
+        flex-grow: 1;
+    }
+    .hamburger_menu
+    {
+        flex-grow: 2;
+    }
+    .navigation_bar_item{
+        color: #EDF2F4;
+        text-decoration: none;
+        font-size: 40px;
+        padding-right: 20px;
+    }
+
+    .section_title
+    {
+        font-size: 50px;
+        color:#2B2D42;
+    }
+
+    .section_container
+    {
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .content_conatiner
+    {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 900px;
+    }
+
+    .mission_container
+    {
+        height:600px
+    }
+    .mission_statement
+    {
+        font-size: 23px;
+        color: #8D99AE;
+        width: 900px;
+    }
+
+    .story_container
+    {
+        background-color: #8D99AE;
+        height:1200px
+    }
+
+    .story_text
+    {
+        font-size: 20px;
+        padding-left: 50px;
+    }
+
+    .story_image
+    {
+        border-radius: 90px;
+    }
+
+    .founder_container
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-left:50px;
+        padding-right: 50px;
+    }
+    .founders_container
+    {
+        height: 1500px;
+    }
+    .founder_image
+    {
+        border-radius: 100%;
+    }
+    .founder_name
+    {
+        font-size: 20px;
+    }
+
+    .footer_c
+    {
+        background-color: #2B2D42;
+        color: #EDF2F4;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer_container
+    {
+        display: flex;
+        min-width: 800px;
+        justify-content: space-evenly;
+    }
+
+    .footer_category_title
+    {
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .footer_item
+    {
+        font-size: 16px;
+    }
+
+    .footer_property_text
+    {
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    .footer_develop_text
+    {
+        text-align: center;
+    }
+    .social_media_footer_icon
+    {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 999px)
+{
+    .navigation_bar
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        height: 200px;
+        background-color:#2B2D42;
+    }
+    .navbar_container
+    {
+        display: flex;
+        align-items: center;
+        width: 800px;
+    }
+    .navigation_bar_items
+    {
+        display: flex;
+        justify-content: flex-start;
+        text-align: right;
+        align-items: center;
+        flex-grow: 1;
+    }
+    .hamburger_menu
+    {
+        flex-grow: 2;
+    }
+    .navigation_bar_item{
+        color: #EDF2F4;
+        text-decoration: none;
+        font-size: 70px;
+        padding-right: 20px;
+    }
+
+    .section_title
+    {
+        font-size: 80px;
+        color:#2B2D42;
+    }
+
+    .section_container
+    {
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .content_conatiner
+    {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 900px;
+    }
+
+    .mission_container
+    {
+        height:1300px
+    }
+    .mission_statement
+    {
+        font-size: 60px;
+        color: #8D99AE;
+        width: 900px;
+    }
+
+    .story_container
+    {
+        background-color: #8D99AE;
+        height:4500px
+    }
+
+    .story_text
+    {
+        font-size: 50px;
+        padding-left: 50px;
+    }
+
+    .story_image
+    {
+        border-radius: 90px;
+    }
+
+    .founder_container
+    {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding-left:50px;
+        padding-right: 50px;
+    }
+    .founders_container
+    {
+        height: 4500px;
+    }
+    .founder_image
+    {
+        border-radius: 100%;
+    }
+    .founder_name
+    {
+        font-size: 40px;
+    }
+
+    .founder_text
+    {
+        font-size: 50px;
+    }
+    .footer_c
+    {
+        background-color: #2B2D42;
+        color: #EDF2F4;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer_container
+    {
+        display: flex;
+        min-width: 800px;
+        justify-content: space-evenly;
+    }
+
+    .footer_category_title
+    {
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    .footer_item
+    {
+        font-size: 16px;
+    }
+
+    .footer_property_text
+    {
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    .footer_develop_text
+    {
+        text-align: center;
+    }
+    .social_media_footer_icon
+    {
+        font-size: 30px;
+    }
+}
