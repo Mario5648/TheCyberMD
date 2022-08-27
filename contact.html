@@ -2,9 +2,9 @@
     <link rel="icon" href="images/heart_icon.png">
 
     <header>
-        <title>About Us</title>
+        <title>Contact Us</title>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">        
-        <link rel="stylesheet" href="styles/about_styles.css">
+        <link rel="stylesheet" href="styles/contact_styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,7 +19,7 @@
                     <a href="javascript:void(0)" onclick="w3_close()" class="sidebar_item">Close X</a>
                     <a href="#resources" onclick="w3_close()" class="sidebar_item">Resources</a>
                     <a href="./about.html" onclick="w3_close()" class="sidebar_item">About Us</a>
-                    <a href="#contact" onclick="w3_close()" class="sidebar_item">Contact Us</a>
+                    <a href="./contact.html" onclick="w3_close()" class="sidebar_item">Contact Us</a>
                     <a href="#contributors" onclick="w3_close()" class="sidebar_item">Contributors</a>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <span class="show_on_desktops">
                         <a href="#resources" class="hide_mobile navigation_bar_item">Resources</a>
                         <a href="./about.html" class="hide_mobile navigation_bar_item">About Us</a>
-                        <a href="#contact" class="hide_mobile navigation_bar_item">Contact Us</a>
+                        <a href="./contact.html" class="hide_mobile navigation_bar_item">Contact Us</a>
                         <a href="#collab" class="hide_mobile navigation_bar_item">Collaborators</a>
                     </span>
                 <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
@@ -40,43 +40,37 @@
             </div>
           </div>
 
-          <!--Mission section-->
-          <div class="section_container mission_container">
-            <p class="section_title">Mission</p>
-            <p class="mission_statement">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+          <!--Contact section-->
+          <div class="section_container">
+            <p class="section_title">Contact Us</p>
+            <p class="contact_text">Reach out to us! Submit a question, report an issue, have a question? Send it to us and we will get back to you as soon as possible!</p>
+            <form>
+                <div class="form_container">
+                    <label for="name" class="label_text">Name</label>
+                    <input type="text" placeholder="John Doe", id="name" name="name" class="text_field"/>
+                    <br>
+                    <label for="email" class="label_text">Email</label>
+                    <input type="text" placeholder="john@gmail.com", id="email" name="email" class="text_field"/> 
+                    <br>
+                    <label for="reason" class="label_text">Reason</label>
+                    <select name="reason" id="reason" class="select_field">
+                        <option value="question">Question</option>
+                        <option value="submit_question">Submit a Question</option>
+                        <option value="report_question">Report a Question</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <br>
+                    <label for="message" class="label_text">Message</label>
+                    <textarea id="message" name="message" placeholder="Message" class="textarea_field"></textarea>
+                    <br>
+                    <label for="submit_file" class="label_text">Submit A File</label>
+                    <input type="file" id="submit_file" name="submit_file" class="choose_file_field">
+                    <br>
+                </div>
+                <br>
+                <center><input type="submit" class="submit_button" /></center>
+            </form>
           </div>
-
-          <!--Story section-->
-          <div class="section_container story_container">
-            <p class="section_title">Our Story</p>
-            <div class="content_conatiner">
-                <div>
-                    <img class="story_image" src="./images/empty.jpg">
-                </div>
-                <div>
-                    <p class="story_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-          </div>
-
-          <!--Founders section-->
-          <div class="section_container founders_container">
-            <p class="section_title">The Founders</p>
-            <div class="content_conatiner">
-                <div class="founder_container">
-                    <img class="founder_image" src="./images/empty.jpg">
-                    <p class="founder_name">First LastName</p>
-                    <p class="founder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-                <div class="founder_container">
-                    <img class="founder_image" src="./images/empty.jpg">
-                    <p class="founder_name">First LastName</p>
-                    <p class="founder_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-
-          </div>
-
 
           <div class="footer_c">
             <div class="footer_container">
@@ -100,7 +94,7 @@
                     <p class="footer_category_title">Community</p>
                     <p>Discord</p>
                     <p>Contribute</p>
-                    <p>Contact Us</p>
+                    <a class="footer_item_text" href="./contact.html">Contact Us</a>
                     <p>Volunteer</p>
                 </div> 
                 <!--Item four-->
