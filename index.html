@@ -4,6 +4,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">        
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     </header>
 
     <body>
@@ -12,17 +15,26 @@
                 <img class="navigation_bar_image" src="./images/logo.png">
                 <span class="navigation_bar_items">
                     <span class="show_on_desktops">
-                        <a class="navigation_bar_item">Resources</a>
-                        <a class="navigation_bar_item">About Us</a>
-                        <a class="navigation_bar_item">Contact Us</a>
-                        <a class="navigation_bar_item">Contributors</a>
+                        <div id="myLinks">
+                            <a class="navigation_bar_item">Resources</a>
+                            <a class="navigation_bar_item">About Us</a>
+                            <a class="navigation_bar_item">Contact Us</a>
+                            <a class="navigation_bar_item">Contributors</a>
+                        </div>
                     </span>
 
-                    <span class="show_on_tablets hamburger_menu"><i class="fa fa-bars"></i></span>
+                    <span class="show_on_tablets hamburger_menu"><a href="javascript:void(0)" onclick="showMobileMenu()"><i class="fa fa-bars"></i></a></span>
                 </span>  
             </div>
         </nav>
         
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navbar" class="w3-bar-block w3-hide" style="margin-top:46px">
+        <a href="#Resources" class="w3-bar-item w3-button w3-padding-large">Resources</a>
+        <a href="#AboutUs" class="w3-bar-item w3-button w3-padding-large">About Us</a>
+        <a href="#Contact" class="w3-bar-item w3-button w3-padding-large">Contact Us</a>
+        <a href="#Contributors" class="w3-bar-item w3-button w3-padding-large">Contributors</a>
+        </div>
         <!--Hero section-->
         <div class="hero_banner">
             <!--Left section-->
@@ -45,16 +57,19 @@
             <div class="row_items_third">
                 <!--Item one-->
                 <div class="column_item">
+                    <span class="item_icon"><i class="fa fa-group"></i></span>
                     <p class="column_item_title">Collaboration</p>
                     <p class="column_item_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
                 <!--Item two-->
                 <div class="column_item">
+                    <span class="item_icon"><i class="fa fa-file-text"></i></span>
                     <p class="column_item_title">Compiled Content</p>
                     <p class="column_item_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>   
                 <!--Item three-->
                 <div class="column_item">
+                    <span class="item_icon"><i class="fa fa-book"></i></span>
                     <p class="column_item_title">Study</p>
                     <p class="column_item_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>      
@@ -67,7 +82,7 @@
             <div class="row_items_half">
                 <!--Left section-->
                 <div>
-                    <img class="feautre_image" src="./images/empty.jpg">
+                    <img class="feautre_image" src="./images/cyberMD_product_image.png">
                 </div>
                 <!--Right Section-->
                 <div class="column_items">
@@ -89,41 +104,50 @@
                 </div>
             </div>
         </div>
+        <div class="footer_c">
+            <div class="footer_container">
+                <!--Item one-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Explore</p>
+                    <p>About Us</p>
+                    <p>Resources</p>
+                    <p>Contributors</p>
+                </div>
+                <!--Item two-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Resources</p>
+                    <p>Videos</p>
+                    <p>Readings</p>
+                    <p>Questions</p>
+                    <p>Tests/Quizzes</p>
+                </div> 
+                <!--Item three-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Community</p>
+                    <p>Discord</p>
+                    <p>Contribute</p>
+                    <p>Contact Us</p>
+                    <p>Volunteer</p>
+                </div> 
+                <!--Item four-->
+                <div class="footer_item">
+                    <p class="footer_category_title">Follow Us</p>
+                    <span class="social_media_footer_icon"><i class="fa fa-instagram"></i></span>
+                    <span class="social_media_footer_icon"><i class="fa fa-twitter"></i></span>
+                </div> 
+            </div>
+            <p class="footer_property_text">Cyber M.D 2022</p>
+        </div>
+        <script>
+            function showMobileMenu() {
+                var x = document.getElementById("navbar");
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                } else { 
+                    x.className = x.className.replace(" w3-show", "");
+                }
+            }
+        </script>
     </body>
 
-    <div class="footer_c">
-        <div class="footer_container">
-            <!--Item one-->
-            <div class="footer_item">
-                <p class="footer_category_title">Explore</p>
-                <p>About Us</p>
-                <p>Resources</p>
-                <p>Contributors</p>
-            </div>
-            <!--Item two-->
-            <div class="footer_item">
-                <p class="footer_category_title">Resources</p>
-                <p>Videos</p>
-                <p>Readings</p>
-                <p>Questions</p>
-                <p>Tests/Quizzes</p>
-            </div> 
-            <!--Item three-->
-            <div class="footer_item">
-                <p class="footer_category_title">Community</p>
-                <p>Discord</p>
-                <p>Contribute</p>
-                <p>Contact Us</p>
-                <p>Volunteer</p>
-            </div> 
-            <!--Item four-->
-            <div class="footer_item">
-                <p class="footer_category_title">Follow Us</p>
-                <p>Instagram</p>
-                <p>Twitter</p>
-                <p>Discord</p>
-            </div> 
-        </div>
-        <p class="footer_property_text">Cyber M.D 2022</p>
-    </div>
 </html>

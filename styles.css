@@ -2,7 +2,6 @@ body
 {
     margin: 0 0 0 0;
     font-family: 'Roboto Mono';
-    width : 100%;
 }
 
 /*Desktop*/
@@ -87,7 +86,7 @@ body
     .first_section
     {
         background-color: #EDF2F4;
-        height: 700px;
+        height: 800px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -107,7 +106,7 @@ body
         justify-content: center;
         max-width: 1500px;
         text-align: center;
-        padding-top: 250px;
+        padding-top: 100px;
     }
 
     .column_item
@@ -120,6 +119,11 @@ body
     {
         font-size: 30px;
         font-weight: 800;
+    }
+    .item_icon
+    {
+        font-size: 150px;
+        color: #8D99AE;
     }
 
     .second_section
@@ -189,6 +193,10 @@ body
     {
         text-align: center;
     }
+    .social_media_footer_icon
+    {
+        font-size: 30px;
+    }
     .show_on_tablets
     {
         display: none;
@@ -213,7 +221,6 @@ body
         display: flex;
         justify-content: center;
         flex-direction: row;
-
     }
     .navigation_bar_container
     {   
@@ -246,6 +253,7 @@ body
     {
         font-size: 50px;
     }
+    
     .hero_banner
     {
         margin-top: -5px;
@@ -314,6 +322,12 @@ body
     {
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    .item_icon
+    {
+        font-size: 100px;
+        color: #8D99AE;
     }
 
     .column_item_title
@@ -388,6 +402,10 @@ body
     .footer_develop_text
     {
         text-align: center;
+    }
+    .social_media_footer_icon
+    {
+        font-size: 30px;
     }
 }
 
@@ -473,7 +491,7 @@ body
     .first_section
     {
         background-color: #EDF2F4;
-        height: 2000px;
+        height: 2500px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -508,6 +526,11 @@ body
     {
         font-size: 35px;
         font-weight: 800;
+    }
+    .item_icon
+    {
+        font-size: 200px;
+        color: #8D99AE;
     }
     .column_item_text
     {
@@ -586,6 +609,10 @@ body
     .footer_develop_text
     {
         text-align: center;
+    }
+    .social_media_footer_icon
+    {
+        font-size: 30px;
     }
     .hide_on_phones
     {
