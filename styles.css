@@ -50,110 +50,136 @@ body
     background-color: #2B2D42;
     color: white;
     height: 700px;
-}
-
-.hero_text
-{
-    font-size: 25px;
-}
-
-.hero_main_text
-{
-    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 .hero_image
 {
-    height: 20px;
+    height: 350px;
 }
 
+.hero_text
+{
+    font-size: 20px;
+    padding-right: 50px;
+}
+
+.hero_main_text
+{
+    font-size: 30;
+    font-weight: 800;
+}
 .hero_button
 {
     height: 55px;
+    font-size: 20px;
     background-color: #EF233C;
     color: #EDF2F4;
     border-style: none;
+    border-radius: 15px;
 }
 
 .first_section
 {
     background-color: #EDF2F4;
-    height: 600px;
+    height: 700px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 
 .section_title
 {
+    font-size: 40px;
     font-weight: 800;
     text-align: center;
 }
 
 .row_items_third
-{
+{   
+    display:flex;
+    justify-content: center;
+    max-width: 1500px;
     text-align: center;
+    padding-top: 250px;
 }
 
 .column_item
 {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .column_item_title
 {
+    font-size: 30px;
     font-weight: 800;
 }
 
 .second_section
 {
-    height: 1200px;
-}
-
-.column_items
-{
-
+    height: 800px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
 }
 
 .row_items_half
 {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    max-width: 1500px;
+}
 
+.column_items
+{
+    padding-left: 30px;
 }
 
 .feature_title
 {
+    font-size: 20px;
     font-weight: 800;
     color: #EF233C;
 }
 
-
-footer
+.footer_c
 {
     background-color: #2B2D42;
     color: #EDF2F4;
-    height: 330px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
-.footer
+.footer_container
 {
-
+    display: flex;
+    width: 1500px;
+    justify-content: space-evenly;
 }
 
 .footer_category_title
 {
+    font-size: 20px;
     font-weight: 800;
 }
 
-.footer_item_one
+.footer_item
 {
-}
-.footer_item_two
-{
-}
-.footer_item_three
-{
-}
-.footer_item_four
-{
+    font-size: 16px;
 }
 
 .footer_property_text
 {
+    padding-top: 50px;
     text-align: center;
 }
 
