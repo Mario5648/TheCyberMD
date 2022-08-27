@@ -10,6 +10,21 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </header>
     <body>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div class="hide_desktops">
+            <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+            <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none; margin-top:0px; width:300px; background-color: #EDF2F4;" id="mySidebar">
+                <div class="side-bar">
+                    <a href="javascript:void(0)" onclick="w3_close()" class="sidebar_item">Close X</a>
+                    <a href="#resources" onclick="w3_close()" class="sidebar_item">Resources</a>
+                    <a href="#about" onclick="w3_close()" class="sidebar_item">About Us</a>
+                    <a href="#contact" onclick="w3_close()" class="sidebar_item">Contact Us</a>
+                    <a href="#contributors" onclick="w3_close()" class="sidebar_item">Contributors</a>
+                </div>
+            </div>
+        </div>
+
         <div class="navigation_bar">
             <div class="navbar_container">
                 <div class="navigation_bar_items">
@@ -20,18 +35,8 @@
                         <a href="#contact" class="hide_mobile navigation_bar_item">Contact Us</a>
                         <a href="#collab" class="hide_mobile navigation_bar_item">Collaborators</a>
                     </span>
-                <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
                 </div>
-            </div>
-          </div>
-          
-          <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-          <div class="hide_desktops">
-            <div id="navDemo" class="w3-bar-block w3-black w3-hide hide_desktops w3-top" style="margin-top:46px">
-                <a href="#resources" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Resources</a>
-                <a href="#about" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">About Us</a>
-                <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Contact Us</a>
-                <a href="#collab" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Collaborators</a>
             </div>
           </div>
 
@@ -108,14 +113,19 @@
             <p class="footer_property_text">Cyber M.D 2022</p>
         </div>
         <script>
-            // Used to toggle the menu on small screens when clicking on the menu button
-            function myFunction() {
-            var x = document.getElementById("navDemo");
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-            } else { 
-                x.className = x.className.replace(" w3-show", "");
+            var mySidebar = document.getElementById("mySidebar");
+
+            function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mySidebar.style.display = 'none';
+            } else {
+                mySidebar.style.display = 'block';
             }
+            }
+
+            // Close the sidebar with the close button
+            function w3_close() {
+                mySidebar.style.display = "none";
             }
         </script>
     </body>
