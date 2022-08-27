@@ -10,6 +10,18 @@
     </header>
 
     <body>
+        <div class="hide_desktops">
+            <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+            <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none; margin-top:0px; width:300px; background-color: #EDF2F4;" id="mySidebar">
+                <div class="side-bar">
+                    <a href="javascript:void(0)" onclick="w3_close()" class="navigation_bar_item">Close X</a>
+                    <a href="#about" onclick="w3_close()" class="navigation_bar_item">Resources</a>
+                    <a href="#team" onclick="w3_close()" class="navigation_bar_item">About Us</a>
+                    <a href="#work" onclick="w3_close()" class="navigation_bar_item">Contact Us</a>
+                    <a href="#pricing" onclick="w3_close()" class="navigation_bar_item">Contributors</a>
+                </div>
+            </div>
+        </div>
         <nav class="navigation_bar">
             <div class="navigation_bar_container">
                 <img class="navigation_bar_image" src="./images/logo.png">
@@ -23,18 +35,12 @@
                         </div>
                     </span>
 
-                    <span class="show_on_tablets hamburger_menu"><a href="javascript:void(0)" onclick="showMobileMenu()"><i class="fa fa-bars"></i></a></span>
+                    <span class="show_on_tablets hamburger_menu"><a href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a></span>
                 </span>  
             </div>
         </nav>
         
-        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-        <div id="navbar" class="w3-bar-block w3-hide" style="margin-top:46px">
-        <a href="#Resources" class="w3-bar-item w3-button w3-padding-large">Resources</a>
-        <a href="#AboutUs" class="w3-bar-item w3-button w3-padding-large">About Us</a>
-        <a href="#Contact" class="w3-bar-item w3-button w3-padding-large">Contact Us</a>
-        <a href="#Contributors" class="w3-bar-item w3-button w3-padding-large">Contributors</a>
-        </div>
+
         <!--Hero section-->
         <div class="hero_banner">
             <!--Left section-->
@@ -139,13 +145,19 @@
             <p class="footer_property_text">Cyber M.D 2022</p>
         </div>
         <script>
-            function showMobileMenu() {
-                var x = document.getElementById("navbar");
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else { 
-                    x.className = x.className.replace(" w3-show", "");
-                }
+            var mySidebar = document.getElementById("mySidebar");
+
+            function w3_open() {
+            if (mySidebar.style.display === 'block') {
+                mySidebar.style.display = 'none';
+            } else {
+                mySidebar.style.display = 'block';
+            }
+            }
+
+            // Close the sidebar with the close button
+            function w3_close() {
+                mySidebar.style.display = "none";
             }
         </script>
     </body>
