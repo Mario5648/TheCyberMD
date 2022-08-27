@@ -406,14 +406,15 @@ body
     }
     .navigation_bar_container
     {   
+        padding-top:90px;
         display: flex;
         align-items: center;
-        width:400px;
+        width:800px;
     }
 
     .navigation_bar_image
     {
-        height:40px;
+        height:90px;
         flex-shrink: 0;
     }
 
@@ -433,14 +434,14 @@ body
 
     .hamburger_menu
     {
-        font-size: 50px;
+        font-size: 100px;
     }
     .hero_banner
     {
         margin-top: -5px;
         background-color: #2B2D42;
         color: white;
-        height: 1200px;
+        height: 1500px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -450,19 +451,19 @@ body
     {
         padding-bottom: 100px;
         text-align: center;
-        font-size: 15px;
+        font-size: 25px;
         padding-right: 50px;
     }
 
     .hero_main_text
     {
-        font-size: 20px;
+        font-size: 50px;
         font-weight: 800;
     }
     .hero_button
     {
-        height: 45px;
-        font-size: 15px;
+        height: 85px;
+        font-size: 25px;
         background-color: #EF233C;
         color: #EDF2F4;
         border-style: none;
