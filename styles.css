@@ -162,7 +162,7 @@ body
 .footer_container
 {
     display: flex;
-    width: 1500px;
+    min-width: 800px;
     justify-content: space-evenly;
 }
 
