@@ -615,7 +615,7 @@ body
     .footer_container
     {
         display: flex;
-        max-width: 800px;
+        min-width: 800px;
         justify-content: space-evenly;
     }
 
