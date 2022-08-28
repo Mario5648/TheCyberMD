@@ -13,7 +13,7 @@ body
 }
 
 /*Desktop*/
-@media only screen and (min-width: 1600px) 
+@media only screen and (min-width: 1200px) 
 {
     .navigation_bar
     {
@@ -30,7 +30,7 @@ body
     {   
         display: flex;
         align-items: center;
-        width:1500px;
+        width:1200px;
     }
 
     .navigation_bar_image
@@ -111,7 +111,7 @@ body
     {   
         display:flex;
         justify-content: center;
-        max-width: 1500px;
+        max-width: 1200px;
         text-align: center;
         padding-top: 100px;
     }
@@ -147,7 +147,7 @@ body
         display: flex;
         justify-content: center;
         flex-direction: row;
-        max-width: 1500px;
+        max-width: 1200px;
     }
 
     .column_items
@@ -214,7 +214,7 @@ body
     }
 }
 
-@media only screen and (max-width: 1600px)
+@media only screen and (max-width: 1200px)
 {
     .show_on_desktops
     {
@@ -222,7 +222,7 @@ body
     }
 }
 /*Tablets*/
-@media only screen and (max-width: 1599px)and (min-width: 1000px) {
+@media only screen and (max-width: 1199px)and (min-width: 1000px) {
     .navigation_bar
     {
         background-color: #2B2D42;
@@ -334,7 +334,7 @@ body
     {   
         display:flex;
         justify-content: center;
-        max-width: 1500px;
+        max-width: 1200px;
         text-align: center;
         padding-top: 250px;
     }

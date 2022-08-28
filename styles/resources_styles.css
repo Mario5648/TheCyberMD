@@ -12,7 +12,7 @@ body
 }
 
 /*Desktop*/
-@media only screen and (min-width: 1600px) 
+@media only screen and (min-width: 1200px) 
 {    .hide_desktops
     {
         display:none;
@@ -29,7 +29,7 @@ body
     {
         display: flex;
         align-items: center;
-        width: 1500px;
+        width: 1200px;
     }
     .navigation_bar_items
     {
@@ -60,7 +60,7 @@ body
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
-        width: 1500px;
+        width: 1200px;
     }
 
     .section_title
@@ -163,7 +163,7 @@ body
     }
 }
 
-@media only screen and (max-width: 1600px)
+@media only screen and (max-width: 1200px)
 {
     .show_on_desktops
     {
@@ -171,7 +171,7 @@ body
     }
 }
 /*Tablets*/
-@media only screen and (max-width: 1599px)and (min-width: 1000px) 
+@media only screen and (max-width: 1199px)and (min-width: 1000px) 
 {
     .navigation_bar
     {
