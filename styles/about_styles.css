@@ -284,7 +284,7 @@ body
         background-image: url("../images/vlad-busuioc-xyPxcqh8Tt8-unsplash3.jpg");
         background-repeat: no-repeat;
         background-attachment: fixed;
-        background-position: center top;
+        background-position: center;
         background-size: cover;
     }
     .mission_statement
@@ -338,10 +338,10 @@ body
     {
         height: 1000px;
     }
+
     .founder_image
     {
-        padding-top: 30px;
-        border-radius: 100%;
+        border-radius: 50%;
     }
     .founder_name
     {
@@ -473,7 +473,7 @@ body
         background-image: url("../images/vlad-busuioc-xyPxcqh8Tt8-unsplash3.jpg");
         background-repeat: no-repeat;
         background-attachment: fixed;
-        background-position: center top;
+        background-position: center;
         background-size: cover;
     }
     .mission_statement
