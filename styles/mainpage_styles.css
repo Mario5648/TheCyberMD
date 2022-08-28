@@ -604,6 +604,7 @@ body
 
     .footer_c
     {
+        width:100%;
         background-color: #2B2D42;
         color: #EDF2F4;
         height: 400px;
@@ -615,7 +616,7 @@ body
     .footer_container
     {
         display: flex;
-        width: 600px;
+        max-width: 800px;
         justify-content: space-evenly;
     }
 
