@@ -359,9 +359,13 @@ body
         font-size: 30px;
     }
 }
-
+/*Phones*/
 @media only screen and (max-width: 999px)
 {
+    html
+    {
+        margin-right:-4px;   
+    }
     .navigation_bar
     {
         display: flex;
