@@ -159,8 +159,6 @@
             {
 
                 let categoryId = localStorage.getItem("categoryId");
-
-                console.log(categoryId);
                 const Http = new XMLHttpRequest();
                 const url=`https://thecybermd-testingapp-prod.azurewebsites.net/get_questions?category=${categoryId}`;
                 Http.open( "GET", url );
