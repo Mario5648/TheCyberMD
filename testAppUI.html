@@ -59,12 +59,23 @@
                         <button id="submit_question_button" onclick="submitQuestionAnswer()" class="option-button-submit">Submit Answer</button>
                     </div>
 
+                    <!--Analytics container-->
+                    <div id="questionAnalytics" class="question-analytics-container hide-explanation">
+                        <div class="question-analytics-flex">
+                            <p id="QA Total People"></p>
+                            <p id="Avg. User Percentile"></p>
+                            <p id="Avg. Time"></p>
+                        </div>
+                    </div>
+
                     <!--Explanation container-->
                     <div id="answerExplanations" class="explanation-container hide-explanation">
-                    <div>
-                        <p id="correct_answer_explanation"></p>
-                        <p id="incorrect_answer_explanation"></p>
+                        <div>
+                            <p id="correct_answer_explanation"></p>
+                            <p id="incorrect_answer_explanation"></p>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -84,16 +95,49 @@
             var sec = 0;
             var timeTaken = "";
 
+
+            function updateUserAnalytics(username, token, questions_answered, time_spent, correct_answers, wrong_answers)
+            {
+                const Http = new XMLHttpRequest();
+                const url='http://127.0.0.1:8080/update_user_analytics';
+                var params = JSON.stringify({"username":username, "token":token, "questions_answered":questions_answered, "time_spent":time_spent, "correct_answers":correct_answers, "wrong_answers":wrong_answers})
+                Http.open( "POST", url );
+                Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                Http.send(params);
+    
+                Http.onreadystatechange = ( e ) => {
+                    if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                    {
+                        response = JSON.parse( Http.responseText );
+                        if (response["eventFlag"] == true)
+                        {
+                            console.log("Updated User Analytics");
+                        }
+                    }
+                } 
+            }
+
             function finishTest()
             {
+                let username = localStorage.getItem("cybermd_username");
+                let token = localStorage.getItem("cybermd_jwt");
+
                 deleteLocalStorage();
-                console.log(`Correct: ${correctAnswers}, Wrong: ${wrongAnswers}, Incompleted: ${totalNumberQuestions - (correctAnswers + wrongAnswers)}, Score: ${correctAnswers / totalNumberQuestions}`)
+
+                localStorage.setItem("cybermd_jwt", token);
+                localStorage.setItem("cybermd_username", username);
+
+                let incompletedQuestions = totalNumberQuestions - (correctAnswers + wrongAnswers);
+                let completedQuestions = (correctAnswers + wrongAnswers)
+                console.log(`Correct: ${correctAnswers}, Wrong: ${wrongAnswers}, Incompleted: ${incompletedQuestions}, Score: ${correctAnswers / totalNumberQuestions}`)
                 clearInterval ( timer );
                 console.log(`Time taken - ${sec} Seconds`);
-                let incompletedQuestions = totalNumberQuestions - (correctAnswers + wrongAnswers);
+
                 let score = Math.round((correctAnswers / totalNumberQuestions) * 100)/ 100;
                 score = score * 100;
                 loadFinishTestScreen( correctAnswers,wrongAnswers,incompletedQuestions, score, timeTaken );
+                updateUserAnalytics(username, token, completedQuestions, String(sec), correctAnswers, wrongAnswers);
+
             }
     
             function setlocalStorage( questionInformation )
@@ -126,13 +170,14 @@
                 }
             }
     
-            function updateQuestionStateCompleted( questionId, explanations, answer )
+            function updateQuestionStateCompleted( questionId, explanations, answer, analytics )
             {
                 questionStateInformation = JSON.parse(localStorage.getItem("question_"+questionId+"_State"));
                 questionStateInformation["State"] = "Completed";
                 questionStateInformation["SelectedAnswer"] = $('input[name="answer_choice"]:checked').attr('id');
                 questionStateInformation["Explanations"] = explanations;
                 questionStateInformation["Answer"] = answer;
+                questionStateInformation["Analytics"] = analytics;
                 localStorage.setItem("question_"+questionId+"_State", JSON.stringify(questionStateInformation));
             }
     
@@ -154,8 +199,9 @@
                     try{
                     document.getElementById( questionStateInformation["SelectedAnswer"] ).checked = true;
                     }catch {}
-                    displayAnswerExplanations( questionStateInformation["Explanations"] )
-                    markAnswer( questionStateInformation["Answer"] )
+                    displayAnswerExplanations( questionStateInformation["Explanations"] );
+                    displayQuestionAnalytics( questionStateInformation["Analytics"] );
+                    markAnswer( questionStateInformation["Answer"] );
                     diableQuestions();
                     return
                 }
@@ -228,6 +274,18 @@
                 document.getElementById( "incorrect_answer_explanation" ).innerHTML  = "<h2>Incorrect Answer:</h2>"+formatAnswerExplanations(incorrectExplanations);
             }
     
+            function displayQuestionAnalytics(analytics)
+            {
+                if(!analytics["Available"])
+                {
+                    return;
+                }
+
+                document.getElementById("questionAnalytics").style.display = 'block';
+                document.getElementById("QA Total People").innerHTML = 'Total People<br><center>'+analytics["TotalPeople"]+"</center>";
+                document.getElementById("Avg. User Percentile").innerHTML = 'Avg. Percentile<br><center>'+analytics["AvgPercentile"]+"</center>";
+                document.getElementById("Avg. Time").innerHTML = 'Avg. Time<br><center>'+analytics["AvgTime"]+"</center>";
+            }
             function diableQuestions()
             {
                 var form = document.getElementById("answer_choices");
@@ -240,6 +298,28 @@
     
     
             }
+
+            function updateQuestionAnalytics(questionId, userPercentile, userTimeTaken)
+            {
+                const Http = new XMLHttpRequest();
+                const url='http://127.0.0.1:8080/update_question_analytics';
+                var params = JSON.stringify({"questionId":questionId, "userPercentile":userPercentile, "userTimeTaken":userTimeTaken})
+                Http.open( "POST", url );
+                Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                Http.send(params);
+    
+                Http.onreadystatechange = ( e ) => {
+                    if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                    {
+                        response = JSON.parse( Http.responseText );
+                        if (response["eventFlag"] == true)
+                        {
+                            console.log("Updated Question Analytics");
+                        }
+                    }
+                }             
+            }
+
             function submitQuestionAnswer()
             {
                 const Http = new XMLHttpRequest();
@@ -248,7 +328,11 @@
                 Http.open( "POST", url );
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
                 Http.send(params);
-    
+ 
+                let username = localStorage.getItem("cybermd_username");
+                let token = localStorage.getItem("cybermd_jwt");
+                let time = "0.0";
+                let questionId = questionInformation[ questionNumber ][ 'QuestionId' ];
                 Http.onreadystatechange = ( e ) => {
     
                     if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
@@ -260,7 +344,16 @@
                         correct = checkAnswer( userAnswer, correctAnswer );
                         diableQuestions();
                         markAnswer( correctAnswer );
-                        updateQuestionStateCompleted( questionInformation[ questionNumber ][ 'QuestionId' ], JSON.parse(answerItems[ "Explanations" ]),correctAnswer )
+
+                        let userPercentile = getUserPercentile(username,token)
+                        if (userPercentile != -1)
+                        {
+                            updateQuestionAnalytics(questionId, userPercentile, time);
+                        }
+                        getQuestionAnalytics();
+
+                        let question_analytics = JSON.parse(localStorage.getItem("temp_analytics_cybermd"));
+                        updateQuestionStateCompleted( questionId, JSON.parse(answerItems[ "Explanations" ]),correctAnswer, question_analytics )
                         if(correct)
                         {
                             correctAnswers += 1;
@@ -268,10 +361,63 @@
                         {
                             wrongAnswers += 1;
                         }
+
+
                     }
                 }
             }
+            
+            function getUserPercentile(username, token)
+            {
+                const Http = new XMLHttpRequest();
+                const url='http://127.0.0.1:8080/get_user_analytics';
+                var params = JSON.stringify({'username':username, 'token':token});
+                Http.open( "POST", url );
+                Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                Http.send(params);
     
+                let userPercentile = -1;
+                Http.onreadystatechange = ( e ) => {
+    
+                    if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                    {
+                        response = JSON.parse( Http.responseText );
+
+                        if (response["eventFlag"] == true)
+                        {
+                            userPercentile = response["Percentile"];
+
+                        }
+                    }
+                }
+
+                return userPercentile;
+            }
+            function getQuestionAnalytics()
+            {
+                const Http = new XMLHttpRequest();
+                const url='http://127.0.0.1:8080/get_question_analytics';
+                var params = JSON.stringify({'questionId':questionInformation[ questionNumber ][ 'QuestionId' ]});
+                Http.open( "POST", url );
+                Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                Http.send(params);
+                Http.onreadystatechange = ( e ) => {
+    
+                    if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                    {
+                        response = JSON.parse( Http.responseText );
+
+                        if (response["eventFlag"] == true)
+                        {
+                            console.log(response);
+                            let analytics_results = {"questionId": response[questionId], "TotalPeople": response["TotalPeople"], "AvgPercentile":response["AvgPercentile"], "AvgTime":response["AvgTime"], "Available":true};
+                            displayQuestionAnalytics(analytics_results);
+                            localStorage.setItem("temp_analytics_cybermd",JSON.stringify(analytics_results));
+                        }
+                    }
+                }
+
+            }
             function setupView()
             {
                 document.getElementById( "question" ).innerHTML  = questionInformation[ 0 ][ 'Question' ];
@@ -284,6 +430,7 @@
             {
                 updateQuestionStateSave(questionInformation[ questionNumber ][ 'QuestionId' ]);
                 document.getElementById("answerExplanations").style.display = 'none';
+                document.getElementById("questionAnalytics").style.display = 'none';
 
                 if ( questionNumber + 1 < totalNumberQuestions )
                 {
@@ -303,6 +450,7 @@
             {
                 updateQuestionStateSave(questionInformation[ questionNumber ][ 'QuestionId' ]);
                 document.getElementById("answerExplanations").style.display = 'none';
+                document.getElementById("questionAnalytics").style.display = 'none';
 
                 if ( questionNumber > 0 )
                 {
@@ -323,6 +471,7 @@
             {
                 updateQuestionStateSave(questionInformation[ questionNumber ][ 'QuestionId' ]);
                 document.getElementById("answerExplanations").style.display = 'none';
+                document.getElementById("questionAnalytics").style.display = 'none';
 
                 questionNumber = questionNumberNew;
 
