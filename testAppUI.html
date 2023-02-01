@@ -40,7 +40,7 @@
                         <p id="questionId">QID #10000</p>
                     </div>
                     <div class="time-text">
-                        <p id="timer">Time Elapsed - <span id="minutes"></span>:<span id="seconds"></span></p>
+                        <p id="timer">Time Elapsed - <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span></p>
                     </div>
                 </div>              
                 <!--Question and answers container-->
@@ -92,9 +92,12 @@
             var totalNumberQuestions;
             var correctAnswers = 0;
             var wrongAnswers = 0;
+            var hoursLabel = document.getElementById("hours");
+            var minutesLabel = document.getElementById("minutes");
+            var secondsLabel = document.getElementById("seconds");
             var sec = 0;
             var timeTaken = "";
-
+            setInterval(setTime, 1000);
 
             function updateUserAnalytics(username, token, questions_answered, time_spent, correct_answers, wrong_answers)
             {
@@ -299,11 +302,11 @@
     
             }
 
-            function updateQuestionAnalytics(questionId, userPercentile, userTimeTaken)
+            function updateQuestionAnalytics(questionId, userPercentile, userTimeTaken, userAnswer)
             {
                 const Http = new XMLHttpRequest();
                 const url='http://127.0.0.1:8080/update_question_analytics';
-                var params = JSON.stringify({"questionId":questionId, "userPercentile":userPercentile, "userTimeTaken":userTimeTaken})
+                var params = JSON.stringify({"questionId":questionId, "userPercentile":userPercentile, "userTimeTaken":userTimeTaken, "userAnswer":userAnswer})
                 Http.open( "POST", url );
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
                 Http.send(params);
@@ -345,10 +348,12 @@
                         diableQuestions();
                         markAnswer( correctAnswer );
 
-                        let userPercentile = getUserPercentile(username,token)
+                        getUserPercentile(username,token);
+                        let userPercentile = parseFloat(localStorage.getItem("temp_userpercentile_cybermd"));
+
                         if (userPercentile != -1)
                         {
-                            updateQuestionAnalytics(questionId, userPercentile, time);
+                            updateQuestionAnalytics(questionId, userPercentile, time, userAnswer);
                         }
                         getQuestionAnalytics();
 
@@ -376,7 +381,6 @@
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
                 Http.send(params);
     
-                let userPercentile = -1;
                 Http.onreadystatechange = ( e ) => {
     
                     if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
@@ -385,13 +389,13 @@
 
                         if (response["eventFlag"] == true)
                         {
-                            userPercentile = response["Percentile"];
+                            let userPercentile = response["Percentile"];
+                            localStorage.setItem("temp_userpercentile_cybermd", userPercentile)
 
                         }
                     }
                 }
 
-                return userPercentile;
             }
             function getQuestionAnalytics()
             {
@@ -410,7 +414,7 @@
                         if (response["eventFlag"] == true)
                         {
                             console.log(response);
-                            let analytics_results = {"questionId": response[questionId], "TotalPeople": response["TotalPeople"], "AvgPercentile":response["AvgPercentile"], "AvgTime":response["AvgTime"], "Available":true};
+                            let analytics_results = {"questionId": response[questionId], "TotalPeople": response["TotalPeople"], "AvgPercentile":response["AvgPercentile"], "AvgTime":response["AvgTime"], "AnswerAnalytics":response["AnswerAnalytics"], "Available":true};
                             displayQuestionAnalytics(analytics_results);
                             localStorage.setItem("temp_analytics_cybermd",JSON.stringify(analytics_results));
                         }
@@ -570,13 +574,27 @@
                 document.getElementById(`question_${questionNumber}_button`).innerHTML = `<p>${questionNumber+1}. Question ${questionNumber+1} <i class="fa fa-flag" style="font-size:20px"></i></p>`;
             }
 
-            function pad ( val ) { return val > 9 ? val : "0" + val; }
-            var timer = setInterval( function(){
-                $("#seconds").html(pad(++sec%60));
-                $("#minutes").html(pad(parseInt(sec/60,10)));
-                timeTaken = pad(parseInt(sec/60,10))+":"+pad(++sec%60);
-            }, 1000);
+            function setTime()
+            {
+                ++sec;
+                secondsLabel.innerHTML = pad(sec%60);
+                minutesLabel.innerHTML = pad(parseInt((sec/60)) % 60);
+                hoursLabel.innerHTML = pad(parseInt((sec/3600)));
 
+            }
+
+            function pad(val)
+            {
+                var valString = val + "";
+                if(valString.length < 2)
+                {
+                    return "0" + valString;
+                }
+                else
+                {
+                    return valString;
+                }
+            }
 
             function loadFinishTestScreen( correctAnswers,wrongAnswers,incompletedQuestions, score, time )
             {
