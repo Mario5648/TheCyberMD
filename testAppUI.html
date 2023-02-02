@@ -17,7 +17,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     </head>
 
-    <body onload="getQuestionInformation()" id="body">
+    <body onload="checkUserLoggedIn();getQuestionInformation()" id="body">
 
         <div class="main-page">
             <!--Side Menu-->
@@ -64,7 +64,6 @@
                         <div class="question-analytics-flex">
                             <p id="QA Total People"></p>
                             <p id="Avg. User Percentile"></p>
-                            <p id="Avg. Time"></p>
                         </div>
                     </div>
 
@@ -126,9 +125,6 @@
                 let token = localStorage.getItem("cybermd_jwt");
 
                 deleteLocalStorage();
-
-                localStorage.setItem("cybermd_jwt", token);
-                localStorage.setItem("cybermd_username", username);
 
                 let incompletedQuestions = totalNumberQuestions - (correctAnswers + wrongAnswers);
                 let completedQuestions = (correctAnswers + wrongAnswers)
@@ -287,7 +283,6 @@
                 document.getElementById("questionAnalytics").style.display = 'block';
                 document.getElementById("QA Total People").innerHTML = 'Total People<br><center>'+analytics["TotalPeople"]+"</center>";
                 document.getElementById("Avg. User Percentile").innerHTML = 'Avg. Percentile<br><center>'+analytics["AvgPercentile"]+"</center>";
-                document.getElementById("Avg. Time").innerHTML = 'Avg. Time<br><center>'+analytics["AvgTime"]+"</center>";
             }
             function diableQuestions()
             {
@@ -358,7 +353,8 @@
                         getQuestionAnalytics();
 
                         let question_analytics = JSON.parse(localStorage.getItem("temp_analytics_cybermd"));
-                        updateQuestionStateCompleted( questionId, JSON.parse(answerItems[ "Explanations" ]),correctAnswer, question_analytics )
+                        updateQuestionStateCompleted( questionId, JSON.parse(answerItems[ "Explanations" ]),correctAnswer, question_analytics );
+                        displayAnswerPercent(questionId);
                         if(correct)
                         {
                             correctAnswers += 1;
@@ -508,7 +504,7 @@
             {
                 answerChoices = JSON.parse( questionInformation[ questionNumber ][ "Answers" ] );
                 numberOfAnswerChoices = Object.keys( answerChoices ).length;
-    
+
                 for( let index = 0; index < numberOfAnswerChoices; index += 1 )
                 {
                     if(document.getElementById("answer_"+index.toString()).value == rightAnswer)
@@ -521,6 +517,31 @@
                         let markIcon = document.createElement("i");
                         markIcon.className = "fa fa-close wrong_answer";
                         document.getElementById(`answer${index}_container`).appendChild(markIcon)
+                    }
+                }
+            }
+
+            function displayAnswerPercent(questionId)
+            {
+                let answerAnalytics = questionStateInformation[ "Analytics" ]["AnswerAnalytics"];
+                let answerChoices = JSON.parse( questionInformation[ questionNumber ][ "Answers" ] );
+                let totalPeople = questionStateInformation[ "Analytics" ]["TotalPeople"]
+                let numberOfAnswerChoices = Object.keys( answerChoices ).length;
+
+                for( let index = 0; index < numberOfAnswerChoices; index += 1 )
+                {
+                    let key = (document.getElementById("answer_"+index.toString()).value).toString()
+                    if(key in answerAnalytics)
+                    {
+                        let percentElement = document.createElement("i");
+                        percentElement.innerText = Math.round((answerAnalytics[key] / totalPeople) * 100, 2).toString()+"%";
+                        document.getElementById(`answer${index}_container`).appendChild(percentElement);
+                    }
+                    else
+                    {
+                        let percentElement = document.createElement("i");
+                        percentElement.innerText = "0%";
+                        document.getElementById(`answer${index}_container`).appendChild(percentElement);
                     }
                 }
             }
@@ -612,6 +633,35 @@
                                                                         <p>Not Finished: ${incompletedQuestions}</p>
                                                                     </span>
                                                                 </div>`;
+            }
+            function checkUserLoggedIn()
+            {
+                const Http = new XMLHttpRequest();
+                const url='http://127.0.0.1:8080/check_user_loggedin';
+                let username = localStorage.getItem("cybermd_username");
+                let token = localStorage.getItem("cybermd_jwt");
+
+                if(username == null || token == null)
+                {
+                    window.open('./login.html','_self');
+                }
+                var params = JSON.stringify({"username": username, "token": token});
+                Http.open( "POST", url );
+                Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                Http.send(params);
+    
+                Http.onreadystatechange = ( e ) => {
+    
+                    if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                    {
+                        response = JSON.parse( Http.responseText );
+
+                        if (response["eventFlag"] == false)
+                        {
+                            window.open('./login.html','_self');
+                        }
+                    }
+                }
             }
         </script>
     </body>

@@ -10,7 +10,7 @@
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </header>
-    <body onload="getUserAnalytics()">
+    <body onload="checkUserLoggedIn();getUserAnalytics()">
 
         <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
         <div class="hide_desktops">
@@ -20,6 +20,8 @@
                     <a href="javascript:void(0)" onclick="w3_close()" class="sidebar_item">Close X</a>
                     <a href="./resources.html" onclick="w3_close()" class="sidebar_item">Resources</a>
                     <a href="./account.html" onclick="w3_close()" class="sidebar_item">Account</a>
+                    <a href="./login.html" onclick="w3_close();logout()" class="sidebar_item">Logout</a>
+
                 </div>
             </div>
         </div>
@@ -31,6 +33,7 @@
                     <span class="show_on_desktops">
                         <a href="./resources.html" class="hide_mobile navigation_bar_item">Resources</a>
                         <a href="./account.html" class="hide_mobile navigation_bar_item">Account</a>
+                        <a href="./login.html" class="hide_mobile navigation_bar_item" onclick="logout()">Logout</a>
                     </span>
                     <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
                 </div>
@@ -146,6 +149,41 @@
                             adjustGradeDonut(grade);
                             populateAnalyticFields(response);
 
+                        }
+                    }
+                }
+            }
+
+            function logout()
+            {
+                localStorage.clear()
+            }
+
+            function checkUserLoggedIn()
+            {
+                const Http = new XMLHttpRequest();
+                const url='http://127.0.0.1:8080/check_user_loggedin';
+                let username = localStorage.getItem("cybermd_username");
+                let token = localStorage.getItem("cybermd_jwt");
+
+                if(username == null || token == null)
+                {
+                    window.open('./login.html','_self');
+                }
+                var params = JSON.stringify({"username": username, "token": token});
+                Http.open( "POST", url );
+                Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                Http.send(params);
+    
+                Http.onreadystatechange = ( e ) => {
+    
+                    if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                    {
+                        response = JSON.parse( Http.responseText );
+
+                        if (response["eventFlag"] == false)
+                        {
+                            window.open('./login.html','_self');
                         }
                     }
                 }
