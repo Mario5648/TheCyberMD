@@ -128,8 +128,6 @@
                 let username = localStorage.getItem("cybermd_username");
                 let user_jwt = localStorage.getItem("cybermd_jwt");
                 document.getElementById("welcome_user_field").innerText = "Welcome "+username;
-                console.log(username)
-                console.log(user_jwt)
                 //hashed_password = hash_password(user_password);
                 var params = JSON.stringify({"username": username, "token": user_jwt});
                 Http.open( "POST", url );

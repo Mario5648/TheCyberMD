@@ -10,20 +10,34 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </header>
 
-    <body class="login-body">
+    <body class="login-body" onload="displayCaptcha()">
         <div class="login-modal">
             <div class="login-modal-items">
                 <img class="logo"src="images/brain_icon.png">
                 <p class="login-title">Welcome Back!</p>
                 <p class="login-subtext">Welcome back! Please enter your credentials.</p>
                 <div class="user-input-section">
-                    <label class="input-label" for="user_username">username</label><br>
+                    <label class="input-label" for="user_username">Username</label><br>
                     <input class="input-box" type="text" id="user_username" name="user_username"><br><br>
 
                     <label class="input-label" for="user_password">Password</label><br>
                     <input class="input-box" type="password" id="user_password" name="user_password">
                 </div>
                 <br>
+                <div id="captcha_image"></div>
+                <div id="captcha_user">
+                    <label for="captchaCodeInput">Enter Captcha Code (All Capitals)</label><br>
+                    <input class="input-box" type="text" id="captchaCodeInput" name="captchaCodeInput">
+                    <div id="captcha_refresh_container" class="captcha_refresh_container">
+                        <div>
+                            <p>Generate New Captcha</p>
+                        </div>
+                        <div>
+                            <button class="captcha_image_refresh" onclick="displayCaptcha()"></button>
+                        </div>
+                        
+                    </div>
+                </div>
                 <button class="login-button" onclick="loginUser()">Log in</button>
                 <p>Don't have an account? <a class="signup-text" href="./signup.html">Sign up</a></p>
             </div>
@@ -33,6 +47,7 @@
 
     <script>
 
+        var ca = null;
         //Check if a token is available in user's machine and login automatically
         function hash_password(user_password)
         {
@@ -49,14 +64,18 @@
 
         function loginUser()
         {
+            let captcha_verify = verifyCaptcha();
+            if(captcha_verify == false)
+            {
+                return;
+            }
             const Http = new XMLHttpRequest();
             const url='http://127.0.0.1:8080/login_user';
 
             let username = document.getElementById("user_username").value;
             let user_password = document.getElementById("user_password").value;
 
-            let hashed_password = hash_password(user_password).then((hex) => console.log(hex));
-            console.log(hashed_password);
+            let hashed_password = hash_password(user_password);
             var params = JSON.stringify({"username": username, "password": user_password});
             Http.open( "POST", url );
             Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -81,6 +100,41 @@
                     }
                 }
             }
+        }
+
+        function displayCaptcha()
+        {
+            const Http = new XMLHttpRequest();
+            const url='http://127.0.0.1:8080/generate_captcha';
+
+
+            Http.open( "GET", url );
+            Http.send( null );
+            Http.onreadystatechange = ( e ) => {
+
+                if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                {
+
+                    response = JSON.parse( Http.responseText );
+
+                    if (response["eventFlag"] == true)
+                    {
+                        let captcha_image = response["captchaImage"];
+                        document.getElementById("captcha_image").innerHTML = `<img src="data:image/png;base64, `+captcha_image+`">`;
+                        ca = response["cc"];
+                    }
+                }
+            }
+        }
+
+        function verifyCaptcha()
+        {
+            if(ca === document.getElementById("captchaCodeInput").value)
+            {
+                return true;
+            }
+            alert("Incorrect Captcha! Please Try Again.");
+            return false;
         }
 
     </script>

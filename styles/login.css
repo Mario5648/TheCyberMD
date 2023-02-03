@@ -18,7 +18,7 @@ body
 
     width: 80%;
     max-width: 800px;
-    height: 700px;
+    height: fit-content;
 
     border-radius: 50px;
 }
@@ -78,4 +78,21 @@ body
 {
     color: #2d9fc2;
     text-decoration: none;
+}
+
+.captcha_refresh_container
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.captcha_image_refresh
+{
+    background-image: url("../images/refresh_icon.png");
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #fdfdfd;
 }
