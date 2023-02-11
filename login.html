@@ -76,7 +76,7 @@
             let user_password = document.getElementById("user_password").value;
 
             let hashed_password = hash_password(user_password);
-            var params = JSON.stringify({"username": username, "password": user_password});
+            var params = JSON.stringify({"username": username, "password": hashed_password});
             Http.open( "POST", url );
             Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             Http.send(params);

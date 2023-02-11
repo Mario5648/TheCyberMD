@@ -211,12 +211,16 @@
     
             function getQuestionInformation()
             {
-
+                let username = localStorage.getItem("cybermd_username")
+                let token = localStorage.getItem("cybermd_jwt")
                 let categoryId = localStorage.getItem("categoryId");
                 const Http = new XMLHttpRequest();
                 const url=`https://thecybermd-testingapp-prod.azurewebsites.net/get_questions?category=${categoryId}`;
-                Http.open( "GET", url );
-                Http.send();
+                var params = JSON.stringify({"category":categoryId, "username": username, "token": token})
+                Http.open( "POST", url );
+                Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                Http.send(params);
+
     
                 Http.onreadystatechange = ( e ) => {
                     if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
