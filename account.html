@@ -96,7 +96,7 @@
             function updateUserEmail()
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/update_user_email';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/update_user_email';
                 let username = localStorage.getItem("cybermd_username");
                 let token = localStorage.getItem("cybermd_jwt");
                 let current_email = document.getElementById("user_current_email").value;
@@ -132,7 +132,7 @@
             function checkUserLoggedIn()
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/check_user_loggedin';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/check_user_loggedin';
                 let username = localStorage.getItem("cybermd_username");
                 let token = localStorage.getItem("cybermd_jwt");
 

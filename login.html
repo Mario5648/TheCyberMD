@@ -70,7 +70,7 @@
                 return;
             }
             const Http = new XMLHttpRequest();
-            const url='http://127.0.0.1:8080/login_user';
+            const url='https://thecybermd-testingapp-prod.azurewebsites.net/login_user';
 
             let username = document.getElementById("user_username").value;
             let user_password = document.getElementById("user_password").value;
@@ -105,7 +105,7 @@
         function displayCaptcha()
         {
             const Http = new XMLHttpRequest();
-            const url='http://127.0.0.1:8080/generate_captcha';
+            const url='https://thecybermd-testingapp-prod.azurewebsites.net/generate_captcha';
 
 
             Http.open( "GET", url );

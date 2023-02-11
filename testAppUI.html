@@ -101,7 +101,7 @@
             function updateUserAnalytics(username, token, questions_answered, time_spent, correct_answers, wrong_answers)
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/update_user_analytics';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/update_user_analytics';
                 var params = JSON.stringify({"username":username, "token":token, "questions_answered":questions_answered, "time_spent":time_spent, "correct_answers":correct_answers, "wrong_answers":wrong_answers})
                 Http.open( "POST", url );
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -300,7 +300,7 @@
             function updateQuestionAnalytics(questionId, userPercentile, userTimeTaken, userAnswer)
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/update_question_analytics';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/update_question_analytics';
                 var params = JSON.stringify({"questionId":questionId, "userPercentile":userPercentile, "userTimeTaken":userTimeTaken, "userAnswer":userAnswer})
                 Http.open( "POST", url );
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -371,7 +371,7 @@
             function getUserPercentile(username, token)
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/get_user_analytics';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/get_user_analytics';
                 var params = JSON.stringify({'username':username, 'token':token});
                 Http.open( "POST", url );
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -396,7 +396,7 @@
             function getQuestionAnalytics()
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/get_question_analytics';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/get_question_analytics';
                 var params = JSON.stringify({'questionId':questionInformation[ questionNumber ][ 'QuestionId' ]});
                 Http.open( "POST", url );
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -637,7 +637,7 @@
             function checkUserLoggedIn()
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/check_user_loggedin';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/check_user_loggedin';
                 let username = localStorage.getItem("cybermd_username");
                 let token = localStorage.getItem("cybermd_jwt");
 

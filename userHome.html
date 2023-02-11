@@ -123,7 +123,7 @@
             function getUserAnalytics()
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/get_user_analytics';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/get_user_analytics';
 
                 let username = localStorage.getItem("cybermd_username");
                 let user_jwt = localStorage.getItem("cybermd_jwt");
@@ -160,7 +160,7 @@
             function checkUserLoggedIn()
             {
                 const Http = new XMLHttpRequest();
-                const url='http://127.0.0.1:8080/check_user_loggedin';
+                const url='https://thecybermd-testingapp-prod.azurewebsites.net/check_user_loggedin';
                 let username = localStorage.getItem("cybermd_username");
                 let token = localStorage.getItem("cybermd_jwt");
 
