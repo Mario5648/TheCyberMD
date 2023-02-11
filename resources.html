@@ -18,7 +18,7 @@
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </header>
-    <body>
+    <body onload="checkUserLoggedIn()">
 
         <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
         <div class="hide_desktops">
@@ -27,11 +27,8 @@
                 <div class="side-bar">
                     <a href="javascript:void(0)" onclick="w3_close()" class="sidebar_item">Close X</a>
                     <a href="./resources.html" onclick="w3_close()" class="sidebar_item">Resources</a>
-                    <a href="./about.html" onclick="w3_close()" class="sidebar_item">About Us</a>
-                    <a href="./contact.html" onclick="w3_close()" class="sidebar_item">Contact Us</a>
-                    <a href="./contributors.html" onclick="w3_close()" class="sidebar_item">Contributors</a>
-                    <a href="https://forms.gle/9r9pPR4xELyxDdUG8" onclick="w3_close()" class="sidebar_item">Submit a Question</a>
-                    <a href="https://forms.gle/HiNRJsNdJRS5engw6" onclick="w3_close()" class="sidebar_item">Feedback</a>
+                    <a href="./account.html" onclick="w3_close()" class="sidebar_item">Account</a>
+                    <a href="./login.html" onclick="w3_close();logout()" class="sidebar_item">Logout</a>
                 </div>
             </div>
         </div>
@@ -39,19 +36,16 @@
         <div class="navigation_bar">
             <div class="navbar_container">
                 <div class="navigation_bar_items">
-                <a href="./index.html" class="navigation_bar_item">Home</a>
+                    <a href="./userHome.html" class="navigation_bar_item">Home</a>
                     <span class="show_on_desktops">
                         <a href="./resources.html" class="hide_mobile navigation_bar_item">Resources</a>
-                        <a href="./about.html" class="hide_mobile navigation_bar_item">About Us</a>
-                        <a href="./contact.html" class="hide_mobile navigation_bar_item">Contact Us</a>
-                        <a href="./contributors.html" class="hide_mobile navigation_bar_item">Contributors</a>
-                        <a href="https://forms.gle/9r9pPR4xELyxDdUG8" class="hide_mobile navigation_bar_item">Submit a Question</a>
-                        <a href="https://forms.gle/HiNRJsNdJRS5engw6" class="hide_mobile navigation_bar_item">Feedback</a>
+                        <a href="./account.html" class="hide_mobile navigation_bar_item">Account</a>
+                        <a href="./login.html" class="hide_mobile navigation_bar_item" onclick="logout()">Logout</a>
                     </span>
-                <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                    <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
-          </div>
+        </div>
 
           <!--Resources section-->
           <div class="section_container">
@@ -218,6 +212,39 @@
                     localStorage.setItem("categoryId", categoryId);
                     localStorage.setItem("categoryName", categoryName);
                     window.open("./testAppUI.html", "_self");
+                }
+                function logout()
+                {
+                    localStorage.clear()
+                }
+                function checkUserLoggedIn()
+                {
+                    const Http = new XMLHttpRequest();
+                    const url='https://thecybermd-testingapp-prod.azurewebsites.net/check_user_loggedin';
+                    let username = localStorage.getItem("cybermd_username");
+                    let token = localStorage.getItem("cybermd_jwt");
+
+                    if(username == null || token == null)
+                    {
+                        window.open('./login.html','_self');
+                    }
+                    var params = JSON.stringify({"username": username, "token": token});
+                    Http.open( "POST", url );
+                    Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                    Http.send(params);
+        
+                    Http.onreadystatechange = ( e ) => {
+        
+                        if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
+                        {
+                            response = JSON.parse( Http.responseText );
+
+                            if (response["eventFlag"] == false)
+                            {
+                                window.open('./login.html','_self');
+                            }
+                        }
+                    }
                 }
             </script>
     </body>
