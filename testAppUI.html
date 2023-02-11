@@ -226,7 +226,7 @@
                     if (Http.readyState == 4 && Http.status == 200 && Http.responseText) 
                     {
                         questionInformation = JSON.parse( Http.responseText );
-                        totalNumberQuestions = Object.keys( questionInformation ).length;
+                        totalNumberQuestions = Object.keys( questionInformation ).length - 1;
                         setupView();
                         populateSidebar();
                         setlocalStorage(questionInformation);
