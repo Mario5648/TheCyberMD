@@ -200,6 +200,7 @@
                     }catch {}
                     displayAnswerExplanations( questionStateInformation["Explanations"] );
                     displayQuestionAnalytics( questionStateInformation["Analytics"] );
+                    displayAnswerPercent(questionId)
                     markAnswer( questionStateInformation["Answer"] );
                     diableQuestions();
                     return
@@ -525,6 +526,7 @@
 
             function displayAnswerPercent(questionId)
             {
+                let questionStateInformation = JSON.parse(localStorage.getItem("question_"+questionId+"_State"));
                 let answerAnalytics = questionStateInformation[ "Analytics" ]["AnswerAnalytics"];
                 let answerChoices = JSON.parse( questionInformation[ questionNumber ][ "Answers" ] );
                 let totalPeople = questionStateInformation[ "Analytics" ]["TotalPeople"]
