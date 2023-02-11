@@ -355,8 +355,8 @@
                             updateQuestionAnalytics(questionId, userPercentile, time, userAnswer);
                         }
                         getQuestionAnalytics();
-
                         let question_analytics = JSON.parse(localStorage.getItem("temp_analytics_cybermd"));
+                        displayQuestionAnalytics(question_analytics);
                         updateQuestionStateCompleted( questionId, JSON.parse(answerItems[ "Explanations" ]),correctAnswer, question_analytics );
                         displayAnswerPercent(questionId);
                         if(correct)
@@ -413,9 +413,7 @@
 
                         if (response["eventFlag"] == true)
                         {
-                            console.log(response);
                             let analytics_results = {"questionId": response[questionId], "TotalPeople": response["TotalPeople"], "AvgPercentile":response["AvgPercentile"], "AvgTime":response["AvgTime"], "AnswerAnalytics":response["AnswerAnalytics"], "Available":true};
-                            displayQuestionAnalytics(analytics_results);
                             localStorage.setItem("temp_analytics_cybermd",JSON.stringify(analytics_results));
                         }
                     }
