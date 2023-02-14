@@ -339,7 +339,7 @@
                                              'username':username,
                                              'token':token,
                                              'userTimeTaken':time,
-                                            })
+                                            });
                 Http.open( "POST", url );
                 Http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
                 Http.send(params);
@@ -627,7 +627,7 @@
             function loadFinishTestScreen( correctAnswers,wrongAnswers,incompletedQuestions, score, time )
             {
                 document.getElementById("body").innerHTML = `    <div class="finish-results-container">
-                                                                    <a href="https://thecybermd.com/index.html"><i class="fa fa-home" style="font-size:50px"></i></a>
+                                                                    <a href="https://thecybermd.com/userHome.html"><i class="fa fa-home" style="font-size:50px"></i></a>
                                                                     <span class="finish-text">
                                                                         <p>Successfully Finished Test!</p>
                                                                         <p>Score: ${score}%</p>
