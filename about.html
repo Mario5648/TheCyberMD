@@ -10,7 +10,6 @@
     </head>
     <body>
 
-        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
         <div class="hide_desktops">
             <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
             <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none; margin-top:0px; width:500px; background-color: #EDF2F4;" id="mySidebar">
@@ -20,9 +19,12 @@
                     <a href="./about.html" onclick="w3_close()" class="sidebar_item">About Us</a>
                     <a href="./contact.html" onclick="w3_close()" class="sidebar_item">Contact Us</a>
                     <a href="./contributors.html" onclick="w3_close()" class="sidebar_item">Contributors</a>
+                    <a href="./videos.html" onclick="w3_close()" class="sidebar_item">Videos</a>
+                    <a href="./blog.html" onclick="w3_close()" class="sidebar_item">Blog</a>
                     <a href="https://forms.gle/9r9pPR4xELyxDdUG8" onclick="w3_close()" class="sidebar_item">Submit a Question</a>
                     <a href="https://forms.gle/HiNRJsNdJRS5engw6" onclick="w3_close()" class="sidebar_item">Feedback</a>
                 </div>
+
             </div>
         </div>
 
@@ -31,12 +33,22 @@
                 <div class="navigation_bar_items">
                 <a href="./index.html" class="navigation_bar_item">Home</a>
                     <span class="show_on_desktops">
-                        <a href="./resources.html" class="hide_mobile navigation_bar_item">Resources</a>
                         <a href="./about.html" class="hide_mobile navigation_bar_item">About Us</a>
-                        <a href="./contact.html" class="hide_mobile navigation_bar_item">Contact Us</a>
                         <a href="./contributors.html" class="hide_mobile navigation_bar_item">Contributors</a>
-                        <a href="https://forms.gle/9r9pPR4xELyxDdUG8" class="hide_mobile navigation_bar_item">Submit a Question</a>
-                        <a href="https://forms.gle/HiNRJsNdJRS5engw6" class="hide_mobile navigation_bar_item">Feedback</a>
+                        <div class="dropdown">
+                            <a href="./contact.html" class="navigation_bar_item dropbtn">Contact Us <i class="fa fa-caret-down"></i></a>
+                            <div class="dropdown-content">
+                                <a href="https://forms.gle/9r9pPR4xELyxDdUG8">Submit a Question</a>
+                                <a href="https://forms.gle/HiNRJsNdJRS5engw6">Feedback</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="./resources.html" class="hide_mobile navigation_bar_item">Resources <i class="fa fa-caret-down"></i></a>
+                            <div class="dropdown-content">
+                                <a href="./videos.html">Videos</a>
+                                <a href="./blog.html">Blog</a>
+                            </div>
+                        </div>
                     </span>
                 <a class="hide_desktops navigation_bar_item hamburger_menu" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
                 </div>
@@ -146,11 +158,11 @@
                 <!--Item four-->
                 <div class="footer_item">
                     <p class="footer_category_title">Follow Us</p>
-                    <span class="social_media_footer_icon"><i class="fa fa-instagram"></i></span>
+                    <span class="social_media_footer_icon"><a href="https://www.instagram.com/thecybermd/"><i class="fa fa-instagram" ></i></a></span>
                     <!--<span class="social_media_footer_icon"><i class="fa fa-twitter"></i></span>-->
                 </div> 
             </div>
-            <p class="footer_property_text">Cyber M.D 2022</p>
+            <p class="footer_property_text">Cyber M.D 2023</p>
             <p>Icons by <a target="_blank" href="https://icons8.com">Icons8</a></p>
         </div>
         <script>

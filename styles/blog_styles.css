@@ -4,6 +4,7 @@
     display: inline-block;
     
 }
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;
@@ -28,6 +29,8 @@
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
+
+
 body
 {
     margin: 0px;
@@ -83,81 +86,48 @@ body
         align-items: center;
         height:1300px;
     }
-    .form_container
+    
+    .contributors_section
     {
         display: flex;
-        justify-content: center;
-        flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
-        width: 800px;
-        padding-top: 50px;
+        flex-direction: column;
+        width: 1200px;
     }
+
     .section_title
     {
-        font-size: 50px;
+        font-size: 40px;
+        font-weight: 800;
     }
-    .contact_text
+    .section_text
     {
-        font-size: 20px;
-        width: 800px;
-    }
-    .label_text
-    {
-        font-size: 20px;
-    }
-    .text_field
-    {
-        width: 100%;
-        height: 40px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;
+        font-size: 25px;
+
     }
 
-    .select_field
+    .contribution_link
     {
+        text-decoration: none;
+        color: rgb(56, 141, 194);
+    }
+    .contributor_table
+    {
+        margin-top: 70px;
         width: 100%;
-        height: 40px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;
+        border-collapse: collapse;
+        font-size: 25px;
     }
-
-    .textarea_field
+    tr
     {
-        width: 100%;
-        height: 200px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;     
+        text-align: left;
+        border-style: solid;
     }
-
-    .choose_file_field
+    tr:nth-child(even){background-color: #2B2D42; color:#EDF2F4}
+    td, th
     {
-        width: 100%;
-        border-bottom: 1px solid #8D99AE;
-    }
-    .choose_file_field::file-selector-button {
-        color: #EDF2F4;
-        background-color: #8D99AE;
-        padding: 0.5em;
-        border-radius: 5px;
-        border-style: none;
-    }
-
-    .submit_button
-    {
-        color: #EDF2F4;
-        background-color: #2B2D42;
-        padding: 0.5em;
-        border-radius: 5px;
-        border-style: none;
-        font-size: 20px;
-        width: 100px;
-        height:50px;
+        padding: 10px;
     }
     .footer_c
     {
@@ -267,84 +237,60 @@ body
         justify-content: flex-start;
         flex-direction: column;
         align-items: center;
-        height:1200px;
+        height:1300px;
     }
-    .form_container
+    
+    .contributors_section
     {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 900px;
+    }
+
+    .section_title
+    {
+        font-size: 40px;
+        font-weight: 800;
+    }
+    .section_text
+    {
+        font-size: 25px;
+
+    }
+
+    .contribution_link
+    {
+        text-decoration: none;
+        color: rgb(56, 141, 194);
+    }
+    .contributor_table
+    {
+        margin-top: 70px;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 25px;
+    }
+    tr
+    {
+        text-align: left;
+        border-style: solid;
+    }
+    tr:nth-child(even){background-color: #2B2D42; color:#EDF2F4}
+    td, th
+    {
+        padding: 10px;
+    }
+    .footer_c
+    {
+        background-color: #2B2D42;
+        color: #EDF2F4;
+        height: 400px;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        align-items: flex-start;
-        width: 900px;
-        padding-top: 50px;
-    }
-    .section_title
-    {
-        font-size: 50px;
-    }
-    .contact_text
-    {
-        font-size: 20px;
-        padding-left:200px;
-        padding-right: 200px;
-    }
-    .label_text
-    {
-        font-size: 20px;
-    }
-    .text_field
-    {
-        width: 100%;
-        height: 40px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;
-    }
-
-    .select_field
-    {
-        width: 100%;
-        height: 40px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;
-    }
-
-    .textarea_field
-    {
-        width: 100%;
-        height: 200px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;     
-    }
-
-    .choose_file_field
-    {
-        width: 100%;
-        border-bottom: 1px solid #8D99AE;
-    }
-    .choose_file_field::file-selector-button {
-        color: #EDF2F4;
-        background-color: #8D99AE;
-        padding: 0.5em;
-        border-radius: 5px;
-        border-style: none;
-    }
-
-    .submit_button
-    {
-        color: #EDF2F4;
-        background-color: #2B2D42;
-        padding: 0.5em;
-        border-radius: 5px;
-        border-style: none;
-        font-size: 20px;
-        width: 100px;
-        height:50px;
+        align-items: center;
     }
     .footer_c
     {
@@ -394,7 +340,7 @@ body
 {
     html
     {
-        margin-right:-4px;   
+        margin-right:-6px;   
     }
     .navigation_bar
     {
@@ -449,89 +395,60 @@ body
         justify-content: flex-start;
         flex-direction: column;
         align-items: center;
-        height:1700px;
+        height:1500px;
     }
-    .form_container
+    
+    .contributors_section
     {
         display: flex;
-        justify-content: center;
-        flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
-        width: 900px;
-        padding-top: 50px;
+        flex-direction: column;
+        width: 800px;
     }
+
     .section_title
     {
         font-size: 80px;
+        font-weight: 800;
     }
-    .contact_text
+    .section_text
     {
+        font-size: 35px;
+
+    }
+
+    .contribution_link
+    {
+        text-decoration: none;
+        color: rgb(56, 141, 194);
+    }
+    .contributor_table
+    {
+        margin-top: 70px;
+        width: 100%;
+        border-collapse: collapse;
         font-size: 40px;
-        padding-left:100px;
-        padding-right: 100px;
     }
-    .label_text
+    tr
     {
-        font-size: 30px;
+        text-align: left;
+        border-style: solid;
     }
-    .text_field
+    tr:nth-child(even){background-color: #2B2D42; color:#EDF2F4}
+    td, th
     {
-        width: 100%;
-        height: 80px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;
-        font-size: 30px;
+        padding: 10px;
     }
-
-    .select_field
+    .footer_c
     {
-        width: 100%;
-        height: 40px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;
-        font-size: 30px;
-    }
-
-    .textarea_field
-    {
-        width: 100%;
-        height: 200px;
-        border-bottom: 1px solid #8D99AE;
-        border-left: 0px solid white;
-        border-top: 0px solid white;
-        border-right: 0px solid white;    
-        font-size: 30px; 
-    }
-
-    .choose_file_field
-    {
-        width: 100%;
-        border-bottom: 1px solid #8D99AE;
-        font-size: 30px;
-    }
-    .choose_file_field::file-selector-button {
-        color: #EDF2F4;
-        background-color: #8D99AE;
-        padding: 0.5em;
-        border-radius: 5px;
-        border-style: none;
-        font-size: 30px;
-    }
-
-    .submit_button
-    {
-        color: #EDF2F4;
         background-color: #2B2D42;
-        padding: 0.5em;
-        border-radius: 5px;
-        border-style: none;
-        font-size: 30px;
-        width: 200px;
-        height:80px;
+        color: #EDF2F4;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     .footer_c
